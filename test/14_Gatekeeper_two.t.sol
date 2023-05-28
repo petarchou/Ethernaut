@@ -1,3 +1,4 @@
+//SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
 import "forge-std/Test.sol";
@@ -9,9 +10,9 @@ contract GatekeeperTwoTest is Test {
     GatekeeperTwo target = new GatekeeperTwo();
 
 
-    function test_attack() public {
+    function test_attack() public { 
         //The attack is in the constructor
-        new Attacker(address(target));
+        Attacker attacker = new Attacker(address(target));
         assertEq(msg.sender,target.entrant());
     }
     
