@@ -12,7 +12,7 @@ contract GatekeeperTwoTest is Test {
 
     function test_attack() public { 
         //The attack is in the constructor
-        Attacker attacker = new Attacker(address(target));
+        new Attacker(address(target));
         assertEq(msg.sender,target.entrant());
     }
     
