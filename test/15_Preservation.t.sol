@@ -14,11 +14,12 @@ contract PreservationTest is Test {
     Attacker attacker = new Attacker(address(target));
 
     function test_attack() public {
-        // address sender = makeAddr("sender");
-        // vm.prank(sender);
+        address sender = makeAddr("sender");
+        vm.star
         attacker.attack();
         address owner = target.owner();
-        assertEq(msg.sender, owner);
+        assertEq(sender, owner);
+        
     }
    
     
