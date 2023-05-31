@@ -2,8 +2,8 @@
 pragma solidity 0.8.19;
 
 import "forge-std/Test.sol";
-import "src/15_Preservation/Level.sol";
-import "src/15_Preservation/Attacker.sol";
+import "src/16_Preservation/Level.sol";
+import "src/16_Preservation/Attacker.sol";
 
 contract PreservationTest is Test {
 
@@ -15,7 +15,6 @@ contract PreservationTest is Test {
 
     function test_attack() public {
         address sender = makeAddr("sender");
-        vm.star
         attacker.attack();
         address owner = target.owner();
         assertEq(sender, owner);
