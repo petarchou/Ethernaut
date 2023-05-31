@@ -13,8 +13,7 @@ contract PreservationScript is Script {
     //forge script script/15_Preservation.s.sol:PreservationScript --rpc-url $SEPOLIA_RPC_URL --broadcast -vvvv
     function run() public {
         uint256  deployerPrivateKey = vm.envUint("SEPOLIA_PRIVATE_KEY");
-        vm.startBroadcast(deployerPrivateKey);
-        Chain memory sepolia = getChain("sepolia");    
+        vm.startBroadcast(deployerPrivateKey);  
         Preservation target = Preservation(0x25D08C11e4297C57f95aAb2D909D6a6964A8c96B);
         Attacker attacker = new Attacker(address(target));
         attacker.attack();
